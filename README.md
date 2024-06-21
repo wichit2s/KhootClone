@@ -1,55 +1,55 @@
 # KhootClone
 
-## สัปดาห์ที่ 1
+## สัปดาห์ที่ 2
 
-ความรู้เบื้องต้นเกี่ยวกับการพัฒนาเว็บ
+โครงสร้างของโครงงานและการรับส่งข้อมูล (HttpRequest,HttpResponse)
 
 ### ผลลัพธ์การเรียนรู้
 
-1. เข้าใจองค์ประกอบสำคัญของการพัฒนาเว็บ (Frontend+Backend+Storage)
+1. เข้าใจรูปแบบการส่งและรับข้อความระหว่างเครื่องผู้ใช้และเครื่องแม่ข่ายได้(client-server)
 
-2. แสดงรายการเทคโนโลยี Frontend ได้อย่างน้อย 3 รายการ
+2. อธิบายองค์ประกอบของข้อมูลคำร้อง (request) ได้
 
-3. แสดงรายการเทคโนโลยี Backend ได้อย่างน้อย 3 รายการ
+3. อธิบายองค์ประกอบของข้อมูลส่งกลับ (response) ได้
 
-4. แสดงรายการ Storage ได้อย่างน้อย 3 รายการ
+4. สร้างโครงงานและเขียนคำสั่งรับส่งข้อมูลได้
 
-5. ติดตั้งโปรแกรมที่จำเป็นสำหรับการพัฒนาเว็บด้วย django ได้
+5. ความรู้เบื้องต้นเกี่ยวกับการพัฒนาเว็บ
 
 ### เอกสารประกอบ
 
-* Web Applications - https://www.softkraft.co/web-application-architecture/
+* Chapter 2 Request and response objects - https://docs.djangoproject.com/en/5.0/ref/request-response/
 
-* Web Development - https://www.geeksforgeeks.org/web-development/
+* HTTP Messages - https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages
 
-* การติดตั้ง - https://www.slideshare.net/slideshow/python-dev-setup-thaipdf/253351612 
+* Tutorial - https://docs.djangoproject.com/en/5.0/intro/tutorial0kk1/ 
 
-  - scoop - https://scoop.sh
 
-     - git
+* Reportlab User Guide - https://docs.reportlab.com/reportlab/userguide/ch1_intro/ 
 
-     - anaconda3
+* Image Manipulation - https://realpython.com/image-processing-with-the-python-pillow-library/ 
 
-  - สมัครใช้ pycharm professional - https://www.jetbrains.com/shop/eform/students
-
-  - download pycharm professional - https://www.jetbrains.com/pycharm/download 
 
 ### เอกสารปฏิบัติ
 
-1. สร้างสภาพแวดล้อมได้
+1. Json Response - https://docs.djangoproject.com/en/5.0/ref/request-response/#jsonresponse-objects
 
-2. สร้างโครงงานชื่อ KhootClone ได้
+2. PDF Response - https://docs.djangoproject.com/en/5.0/howto/outputting-pdf/
 
-3. สร้างไฟล์ requirements.txt ได้
+3. CSV Response - https://docs.djangoproject.com/en/5.0/howto/outputting-csv/
 
-4. เปิด server ได้
+4. Image Response 
 
-### คำสั่ง
+```python
+from django.http import HttpResponse
+from PIL import Image, ImageDraw   
 
-```
-python3 -m venv venv
-.\venv\bin\activate
-pip install -r requirements.txt
-django-admin startproject KhootClone .
-python manage.py runserver 80
+def blur(req):  
+    img = Image.new('RGB', (100,50))
+    drawer = ImageDraw.Draw(img)
+    drawer.text((10,10), '1145005 Web Dev', fill=(100,250,120))  
+    del drawer
+    response = HttpResponse(mimetype="image/png")  
+    img.save(response, 'PNG')  
+    return response
 ```
