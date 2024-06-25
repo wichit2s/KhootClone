@@ -29,4 +29,4 @@ __(model)__
 
 ### ภาพประกอบ
 
-![architecture](./images/week03/django-khnoot-quiz.png)
+![architecture](./images/week03/django-khoot-quiz.png)
