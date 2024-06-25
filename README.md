@@ -1,55 +1,32 @@
 # KhootClone
 
-## สัปดาห์ที่ 2
+## สัปดาห์ที่ 3
 
-โครงสร้างของโครงงานและการรับส่งข้อมูล (HttpRequest,HttpResponse)
+__การจัดการข้อมูล__
+__(model)__
 
 ### ผลลัพธ์การเรียนรู้
 
-1. เข้าใจรูปแบบการส่งและรับข้อความระหว่างเครื่องผู้ใช้และเครื่องแม่ข่ายได้(client-server)
+1. อธิบายรูปแบบการกำหนดรูปแบบการจัดเก็บข้อมูลของ django ได้
 
-2. อธิบายองค์ประกอบของข้อมูลคำร้อง (request) ได้
+2. ประยุกต์ใช้ฟิลด์ (Field) ใน model ได้
 
-3. อธิบายองค์ประกอบของข้อมูลส่งกลับ (response) ได้
+3. ประยุกต์ใช้คำสั่งค้นหา (query) ได้ตรงตามเงื่อนไขที่กำหนดให้
 
-4. สร้างโครงงานและเขียนคำสั่งรับส่งข้อมูลได้
-
-5. ความรู้เบื้องต้นเกี่ยวกับการพัฒนาเว็บ
 
 ### เอกสารประกอบ
 
-* Chapter 2 Request and response objects - https://docs.djangoproject.com/en/5.0/ref/request-response/
+* [Chapter 3 Models and Databases](https://docs.djangoproject.com/en/5.0/topics/db/) 
 
-* HTTP Messages - https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages
+* [ประเภทของฟิลด์ใน model](https://docs.djangoproject.com/en/5.0/ref/models/fields/#field-types)
 
-* Tutorial - https://docs.djangoproject.com/en/5.0/intro/tutorial0kk1/ 
-
-
-* Reportlab User Guide - https://docs.reportlab.com/reportlab/userguide/ch1_intro/ 
-
-* Image Manipulation - https://realpython.com/image-processing-with-the-python-pillow-library/ 
+* [การค้นหาข้อมูล](https://docs.djangoproject.com/en/5.0/topics/db/queries/)
 
 
 ### เอกสารปฏิบัติ
 
-1. Json Response - https://docs.djangoproject.com/en/5.0/ref/request-response/#jsonresponse-objects
+* [Tutorial](https://docs.djangoproject.com/en/5.0/intro/tutorial02/)
 
-2. PDF Response - https://docs.djangoproject.com/en/5.0/howto/outputting-pdf/
+### ภาพประกอบ
 
-3. CSV Response - https://docs.djangoproject.com/en/5.0/howto/outputting-csv/
-
-4. Image Response 
-
-```python
-from django.http import HttpResponse
-from PIL import Image, ImageDraw   
-
-def blur(req):  
-    img = Image.new('RGB', (100,50))
-    drawer = ImageDraw.Draw(img)
-    drawer.text((10,10), '1145005 Web Dev', fill=(100,250,120))  
-    del drawer
-    response = HttpResponse(mimetype="image/png")  
-    img.save(response, 'PNG')  
-    return response
-```
+![architecture](./images/week03/django-khnoot-quiz.png)
