@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.auth.views import LogoutView
 from quiz.views import *
 from quiz.classview import *
 
@@ -23,7 +24,14 @@ urlpatterns = [
     path('choice/delete/<int:pk>/', ChoiceDeleteView.as_view(), name='quiz-choice-delete'),
 
     path('user/delete/<int:pk>/', UserDeleteView.as_view(), name='quiz-user-delete'),
-    path('member/update/<int:pk>/', MemberUpdateView.as_view(), name='quiz-member-update'),
-    #path('user/create/', UserCreateView.as_view(), name='quiz-user-create'),
+
+    path('member/list',             MemberListView.as_view(),   name='quiz_member_list'),
+    path('member/create/',          MemberCreateView.as_view(), name='quiz_member_create'),
+    path('member/read/<int:pk>/',   MemberDetailView.as_view(), name='quiz_member_read'),
+    path('member/update/<int:pk>/', MemberUpdateView.as_view(), name='quiz_member_update'),
+    path('member/delete/<int:pk>/', MemberDeleteView.as_view(), name='quiz_member_delete'),
+
+    path('quiz/login/', QuizLogin.as_view(), name='quiz_login'),
+    path('quiz/logout/', LogoutView.as_view(next_page='quiz-home'), name='quiz_logout'),
 ]
 

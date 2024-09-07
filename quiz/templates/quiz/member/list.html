@@ -1,0 +1,75 @@
+{% extends 'quiz/base.html' %}
+
+{% block main %}
+
+<div class="flex flex-wrap mx-10 justify-around">
+    <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    picture
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    quote
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    state, country
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in object_list %}
+            <tr class="odd:bg-white even:bg-gray-50 border-b">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                  <img class="rounded-full shadow-md" src="{{ member.picture_url }}" alt="picture" />
+                </th>
+                <td class="px-6 py-4">
+                  {{ member.user.first_name }} {{ member.user.last_name }}
+                </td>
+                <td class="px-6 py-4">
+                  {{ member.quote }}
+                </td>
+                <td class="px-6 py-4 flex flex-col">
+                  <span>{{ member.state }},</span>
+                  <span class="text-lg font-bold">{{ member.country }}</span>
+                </td>
+                <td class="px-6 py-4">
+                  <a href="{% url 'quiz_member_update' pk=member.id %}" class="font-medium text-blue-600 hover:underline">Update</a>
+                  <a href="{% url 'quiz_member_delete' pk=member.id %}" class="font-medium text-red-600 hover:underline">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="flex justify-around">
+      <span class="mx-auto">
+        {% if page_obj.has_previous %}
+        <a href="?page=1">
+          <svg class="inline w-12 h-12" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-left-dash"><path d="M19 15V9"/><path d="M15 15h-3v4l-7-7 7-7v4h3v6z"/></svg>
+        </a>
+        <a href="?page={{ page_obj.previous_page_number }}">
+          <svg class="inline" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-left"><path d="M18 15h-6v4l-7-7 7-7v4h6v6z"/></svg>
+        </a>
+        {% endif %}
+
+        <span class="grow">
+          หน้า {{ page_obj.number }} จาก {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}"> 
+          <svg class="inline" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-right"><path d="M6 9h6V5l7 7-7 7v-4H6V9z"/></svg> </a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">
+          <svg class="inline w-12 h-12" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-right-dash"><path d="M5 9v6"/><path d="M9 9h3V5l7 7-7 7v-4H9V9z"/></svg></a>
+        {% endif %}
+      </span>
+    </div>
+</div>
+
+{% endblock %}
