@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Quiz Chat</title>
+    <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap"
+          rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org/dist/ext/ws.js"></script>
+    <style>
+        * {
+            font-family: "Alegreya", serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body hx-ext="ws" ws-connect="/ws/user_online_notification/" class="flex flex-col min-h-screen bg-zinc-700 text-zinc-100">
+<div class="min-h-screen w-[600px] flex mx-auto flex-col">
+    <div class="flex flex-col w-full">
+        <span class="w-full text-left my-4">(A) <span class="bg-zinc-800 border rounded-xl py-2 px-6">question one?</span></span>
+        <span class="w-full text-right"><span class="border rounded-xl py-2 px-6">answer one.</span> (B)</span>
+        <span class="w-full text-left my-4">(A) <span class="bg-zinc-800 border rounded-xl py-2 px-6">question two?</span></span>
+        <span class="w-full text-right"><span class="border rounded-xl py-2 px-6">answer two.</span> (B)</span>
+    </div>
+
+</div>
+</body>
+</html>
